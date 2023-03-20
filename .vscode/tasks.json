@@ -1,0 +1,40 @@
+{
+	// See https://go.microsoft.com/fwlink/?LinkId=733558
+	// for the documentation about the tasks.json format
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Web-Server",
+			"type": "shell",
+			"command": "npx http-server",
+			"presentation": {
+				"group": "chatroom",
+				"panel": "shared"
+			}
+		},
+		{
+			"label": "Signal-Server",
+			"type": "shell",
+			"command": "node ./server.js",
+			"presentation": {
+				"group": "chatroom",
+				"panel": "shared"
+			}
+		},
+		{
+			"label": "Start Chatroom",
+			"dependsOn": [
+				"Signal-Server",
+				"Web-Server"
+			],
+			"presentation": {
+				"echo": false,
+				"reveal": "never",
+				"focus": false,
+				"clear": false,
+				"revealProblems": "never"
+			},
+			"problemMatcher": []
+		}
+	]
+}
